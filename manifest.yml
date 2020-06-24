@@ -1,0 +1,9 @@
+---
+name: Jupyter Notebook
+category: Interactive Apps
+subcategory: Servers
+role: batch_connect
+description: |
+  This app will launch [Jupyter Notebook] on a compute node on the  FAS-RC Academic cluster:
+
+  [Jupyter Notebook]:  http://jupyter.org
