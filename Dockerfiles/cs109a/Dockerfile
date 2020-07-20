@@ -22,7 +22,6 @@ RUN conda install --quiet --yes \
     'plotly' \
     'requests' \
     'rpy2' \
-    'scipy' \
     'scikit-image' \
     'scikit-learn' \
     'seaborn' \
@@ -47,7 +46,7 @@ RUN conda install --quiet --yes \
     fix-permissions "/home/${NB_USER}"
     
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir gap-stat gym progressbar2 pygam
+    pip install --no-cache-dir gap-stat gym progressbar2 pygam tensorflow-gpu scipy
     
 # Install facets which does not have a pip or conda package at the moment
 WORKDIR /tmp
