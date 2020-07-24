@@ -1,32 +1,27 @@
 FROM jupyter/minimal-notebook
 
 RUN conda install --quiet --yes \
-    'altair' \
-    'arviz' \
     'bokeh' \
-    'beautifulsoup4' \
-    'dash' \
-    'gensim' \
-    'holoviews' \
-    'ipytest' \
+    'control' \
+    'filterpy' \
     'IPython' \
     'ipywidgets' \
-    'jupyterlab' \
     'matplotlib' \
-    'mkl-service' \
-    'nltk' \
+    'mesa' \
+    'mpmath' \
+    'numba' \
     'numpy' \
+    'openpyxl' \
     'pandas' \
-    'pip' \
-    'pillow' \
-    'plotly' \
+    'powerlaw' \
     'requests' \
-    'rpy2' \
-    'scikit-image' \
     'scikit-learn' \
+    'scipy' \
     'seaborn' \
-    'spacy' \
-    'statsmodels' \
+    'sympy' \
+    'thinkx' \
+    'xlrd' \
+    'xlsxwriter' \
     && \
     conda clean --al -f -y && \
     # Activate ipywidgets extension in the environment that runs the notebook server
@@ -45,16 +40,11 @@ RUN conda install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
     
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir gap-stat gym progressbar2 pygam tensorflow-gpu scipy
+RUN export CPATH=$CPATH:/usr/local/cuda-10.0/targets/aarch64-linux/include
+RUN export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda-10.0/targets/aarch64-linux/lib
     
-# Install facets which does not have a pip or conda package at the moment
-WORKDIR /tmp
-RUN git clone https://github.com/PAIR-code/facets.git && \
-    jupyter nbextension install facets/facets-dist/ --sys-prefix && \
-    rm -rf /tmp/facets && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir pycuda stochastic
 
 # Import matplotlib the first time to build the font cache.
 ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/"
