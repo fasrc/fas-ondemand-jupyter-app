@@ -1,6 +1,6 @@
 ---
 title: "Jupyter Notebook"
-cluster: "odyssey3"
+cluster: "academic"
 attributes:
   modules: null
   extra_jupyter_args: ""
