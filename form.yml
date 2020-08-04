@@ -13,20 +13,11 @@ attributes:
     label: email address for status notification
     widget: text_field
   custom_memory_per_node: 2
-    label: Memory Allocation in GB
-    widget: number_field
   custom_num_cores: 1
-    label: Number of cores
-    widget: number_field
-    help: "Number of Cpus to allocate"
   custom_num_gpus: 0
-  jupyter_version: "cs109a_latest.sif"
-  custom_reservation:
-    label: Reservation
-    widget: text_field
-  envscript:
-    label: script to be executed before launching jupyter
-    widget: text_field
+  jupyter_version: "harvardat_atg-jupyter-general_latest.sif"
+  custom_reservation: null
+  envscript: null
   bc_account:
     label: "Slurm Account"
     help: "If you are not in multiple labs please leave this blank."
@@ -44,4 +35,3 @@ form:
   - bc_email_on_started
   - custom_email_address
   - custom_reservation
-  - bc_account
