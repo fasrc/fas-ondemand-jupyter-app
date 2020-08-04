@@ -1,6 +1,6 @@
 ---
 title: "Jupyter Notebook"
-cluster: "odyssey3"
+cluster: "academic"
 attributes:
   modules: null
   extra_jupyter_args: ""
@@ -12,22 +12,15 @@ attributes:
   custom_email_address:
     label: email address for status notification
     widget: text_field
-  custom_memory_per_node:
+  custom_memory_per_node: 2
     label: Memory Allocation in GB
-    value: 2
-    min:   2
-    step:  0
-    max:   2
     widget: number_field
-  custom_num_cores:
+  custom_num_cores: 1
     label: Number of cores
-    value: 1
-    min:   1
-    step:  0
-    max:   1
     widget: number_field
     help: "Number of Cpus to allocate"
   custom_num_gpus: 0
+  jupyter_version: "cs109a_latest.sif"
   custom_reservation:
     label: Reservation
     widget: text_field
@@ -46,6 +39,7 @@ form:
   - custom_num_cores
   - custom_num_gpus
   - custom_time
+  - jupyter_version
   - envscript
   - bc_email_on_started
   - custom_email_address
