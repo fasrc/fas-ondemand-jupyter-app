@@ -1,5 +1,7 @@
 FROM jupyter/minimal-notebook
 
+RUN apt-get install libgl1-mesa-glx
+
 RUN conda install --quiet --yes \
     'altair' \
     'arviz' \
