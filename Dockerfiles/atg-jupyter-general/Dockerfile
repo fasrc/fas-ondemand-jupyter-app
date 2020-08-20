@@ -1,6 +1,9 @@
 FROM jupyter/minimal-notebook
 
-RUN sudo apt-get install libgl1-mesa-glx
+USER root
+
+RUN apt-get -y update
+RUN apt-get -y install libgl1-mesa-glx
 
 RUN conda install --quiet --yes \
     'altair' \
