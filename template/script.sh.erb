@@ -30,6 +30,18 @@ export container_image=$container_folder/<%= context.jupyter_version %>
 
 # Launch the Jupyter Notebook Server
 
+JUPYTER_TMPDIR=${TMPDIR:-/tmp}/$(id -un)-jupyter/
+## for conda
+export SINGULARITYENV_CONDA_PKGS_DIRS=${HOME}/.conda/pkgs
+## for pip
+export SINGULARITYENV_XDG_CACHE_HOME=${JUPYTER_TMPDIR}/xdg_cache_home
+## job specific tmp in case there are conflicts with different users running on the same node
+WORKDIR=/scratch/${USER}/${SLURM_JOB_ID}
+mkdir -m 700 -p ${WORKDIR}/tmp
+
+## for specific package mne
+export SINGULARITYENV_NUMBA_CACHE_DIR=$HOME/.cache
+
 # enable this only if needed for debug purpose. note that the password will appear in the output 
 # set -x
 
@@ -41,6 +53,8 @@ export SING_GPU="--nv"
 
 ## bind some extra stuff to be able to talk to slurm from within the container
 export SING_BINDS=" -B /etc/nsswitch.conf -B /etc/sssd/ -B /var/lib/sss -B /etc/slurm -B /slurm -B /var/run/munge  -B `which sbatch ` -B `which srun ` -B `which sacct ` -B `which scontrol ` -B `which salloc `  -B /usr/lib64/slurm/ "
+## job specific tmp dir
+export SING_BINDS=" $SING_BINDS -B ${WORKDIR}/tmp:/tmp " 
 
 cat > $JOBROOT/jupyter.script.sh <<EOF1
 #!/bin/bash
