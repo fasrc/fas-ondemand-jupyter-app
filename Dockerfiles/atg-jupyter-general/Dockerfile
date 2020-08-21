@@ -1,5 +1,10 @@
 FROM jupyter/minimal-notebook
 
+USER root
+
+RUN apt-get -y update
+RUN apt-get -y install libgl1-mesa-glx
+
 RUN conda install --quiet --yes \
     'altair' \
     'arviz' \
@@ -76,6 +81,9 @@ ENV XDG_CACHE_HOME="/home/${NB_USER}/.cache/"
 
 RUN MPLBACKEND=Agg python -c "import matplotlib.pyplot" && \
     fix-permissions "/home/${NB_USER}"
+
+# Set cache directory for numba so that the package "mne" can work
+ENV NUMBA_CACHE_DIR="/home/${NB_USER}/.cache/"
 
 USER $NB_UID
 
