@@ -1,5 +1,5 @@
 ---
-title: "Jupyter Notebook"
+title: "Jupyter Notebook - General"
 cluster: "academic"
 attributes:
   modules: null
@@ -12,28 +12,12 @@ attributes:
   custom_email_address:
     label: email address for status notification
     widget: text_field
-  custom_memory_per_node:
-    label: Memory Allocation in GB
-    value: 4
-    min:   1
-    step:  1
-    max:   32
-    widget: number_field
-  custom_num_cores:
-    label: Number of cores
-    value: 1
-    min:   1
-    step:  1
-    max:   16
-    widget: number_field
-    help: "Number of Cpus to allocate"
+  custom_memory_per_node: 2
+  custom_num_cores: 1
   custom_num_gpus: 0
-  custom_reservation:
-    label: Reservation
-    widget: text_field
-  envscript:
-    label: script to be executed before launching jupyter
-    widget: text_field
+  jupyter_version: "harvardat_atg-jupyter-general_latest.sif"
+  custom_reservation: null
+  envscript: null
   bc_account:
     label: "Slurm Account"
     help: "If you are not in multiple labs please leave this blank."
@@ -46,8 +30,8 @@ form:
   - custom_num_cores
   - custom_num_gpus
   - custom_time
+  - jupyter_version
   - envscript
   - bc_email_on_started
   - custom_email_address
   - custom_reservation
-  - bc_account
