@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
-title: "Jupyter Notebook - General"
-=======
 title: "Jupyter Notebook - CS109a"
->>>>>>> central deployment of containers and small changes on the form
 cluster: "academic"
 attributes:
   modules: null
