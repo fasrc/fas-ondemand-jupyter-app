@@ -66,7 +66,7 @@ RUN conda install --quiet --yes \
     fix-permissions "/home/${NB_USER}"
     
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic tensorflow-gpu
+    pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic tensorflow-gpu keras
 
 # Add extra conda channels
 RUN conda config --append channels conda-forge
