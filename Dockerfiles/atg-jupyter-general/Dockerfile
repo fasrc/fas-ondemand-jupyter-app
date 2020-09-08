@@ -68,6 +68,11 @@ RUN conda install --quiet --yes \
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic tensorflow-gpu
 
+# Add extra conda channels
+RUN conda config --append channels conda-forge
+RUN conda config --append channels anaconda-fusion
+RUN conda config --append channels jmcmurray
+
 # Install facets which does not have a pip or conda package at the moment
 WORKDIR /tmp
 RUN git clone https://github.com/PAIR-code/facets.git && \
