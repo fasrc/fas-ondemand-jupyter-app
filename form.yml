@@ -1,5 +1,5 @@
 ---
-title: "Jupyter Notebook - CS109a"
+title: "Jupyter Notebook - ApPhy286"
 cluster: "academic"
 attributes:
   modules: null
@@ -12,10 +12,24 @@ attributes:
   custom_email_address:
     label: email address for status notification
     widget: text_field
-  custom_memory_per_node: 4
-  custom_num_cores: 2
+  custom_memory_per_node:
+    label: Memory Allocation in GB
+    value: 4
+    min:   1
+    step:  1
+    max:   32
+    widget: number_field
+    help: "Please select the amount of memory you would like to allocate in GB. Max allowed is 32G"
+  custom_num_cores:
+    label: Number of cores
+    value: 1
+    min:   1
+    step:  1
+    max:   8
+    widget: number_field
+    help: "Please select the number of cpu cores you would like to allocate. Max allowed is 8"
   custom_num_gpus: 0
-  jupyter_version: "harvardat_atg-jupyter-general_0c18112.sif"
+  jupyter_version: "harvardat_atg-jupyter-general_a6ce412.sif"
   custom_reservation: null
   envscript: null
   bc_account:
