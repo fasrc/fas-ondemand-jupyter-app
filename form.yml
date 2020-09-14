@@ -12,8 +12,8 @@ attributes:
   custom_email_address:
     label: email address for status notification
     widget: text_field
-  custom_memory_per_node: 2
-  custom_num_cores: 1
+  custom_memory_per_node: 4
+  custom_num_cores: 2
   custom_num_gpus: 0
   jupyter_version: "harvardat_atg-jupyter-general_0c18112.sif"
   custom_reservation: null
