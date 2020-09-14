@@ -1,5 +1,5 @@
 ---
-title: "Jupyter Notebook - General"
+title: "Jupyter Notebook - ES143"
 cluster: "academic"
 attributes:
   modules: null
@@ -12,8 +12,8 @@ attributes:
   custom_email_address:
     label: email address for status notification
     widget: text_field
-  custom_memory_per_node: 4
-  custom_num_cores: 2
+  custom_memory_per_node: 8
+  custom_num_cores: 4
   custom_num_gpus: 0
   jupyter_version: "harvardat_atg-jupyter-general_0c18112.sif"
   custom_reservation: null
