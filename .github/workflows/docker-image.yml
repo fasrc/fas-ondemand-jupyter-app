@@ -25,6 +25,12 @@ jobs:
         name: Set short commit hash - SHORT_SHA - for image tagging
         run: echo "SHORT_SHA=`echo ${GITHHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
       -
+        name: Set branch name - BRANCH_NAME - for image tagging
+        run: echo "BRANCH_NAME=`echo ${GITHUB_REF##*/}`" >> $GITHUB_ENV
+      -
+        name: Echo vars for debugging
+        run: echo "${{ env.GITHUB_REF }} and ${{ env.SHORT_SHA }}"
+      -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -32,5 +38,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            harvardat/${GITHUB_REF##*/}:${{ env.SHORT_SHA }}
-            harvardat/${GITHUB_REF##*/}:latest
+            harvardat/${{ env.GITHUB_REF }}:${{ env.SHORT_SHA }}
+            harvardat/${{ env.GITHUB_REF }}:latest
