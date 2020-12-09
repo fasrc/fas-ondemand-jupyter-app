@@ -6,7 +6,6 @@ RUN apt-get -y update
 RUN apt-get -y install libgl1-mesa-glx
 
 RUN conda install --quiet --yes \
-    'altair' \
     'arviz' \
     'bokeh' \
     'beautifulsoup4' \
