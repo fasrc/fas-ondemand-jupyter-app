@@ -29,7 +29,7 @@ jobs:
         run: echo "BRANCH_NAME=`echo ${GITHUB_REF##*/}`" >> $GITHUB_ENV
       -
         name: Echo vars for debugging
-        run: echo "${{ env.GITHUB_REF }} and ${{ env.SHORT_SHA }}"
+        run: echo "${{ env.BRANCH_NAME }} and ${{ env.SHORT_SHA }}"
       -
         name: Build and push
         id: docker_build
@@ -38,5 +38,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            harvardat/${{ env.GITHUB_REF }}:${{ env.SHORT_SHA }}
-            harvardat/${{ env.GITHUB_REF }}:latest
+            harvardat/${{ env.BRANCH_NAME }}:${{ env.SHORT_SHA }}
+            harvardat/${{ env.BRANCH_NAME }}:latest
