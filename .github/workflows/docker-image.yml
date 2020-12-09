@@ -32,5 +32,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            harvardat/${GITHUB_REF##*/}:${SHORT_SHA}
-            harvardat/${GITHUB_REF##*/}:latest
+            harvardat/${{GITHUB_REF##*/}}:${{SHORT_SHA}}
+            harvardat/${{GITHUB_REF##*/}}:latest
