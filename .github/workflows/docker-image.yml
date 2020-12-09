@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Set short commit hash - SHORT_SHA - for image tagging
-        run: echo "SHORT_SHA=`echo ${GITHHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+        run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
       -
         name: Set branch name - BRANCH_NAME - for image tagging
         run: echo "BRANCH_NAME=`echo ${GITHUB_REF##*/}`" >> $GITHUB_ENV
