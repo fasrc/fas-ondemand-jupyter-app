@@ -22,14 +22,9 @@ jobs:
           username:  ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Set short commit hash - SHORT_SHA - for image tagging
+        name: Set environment variables for image tagging
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
-      -
-        name: Set branch name - BRANCH_NAME - for image tagging
         run: echo "BRANCH_NAME=`echo ${GITHUB_REF##*/}`" >> $GITHUB_ENV
-      -
-        name: Echo vars for debugging
-        run: echo "${{ env.BRANCH_NAME }} and ${{ env.SHORT_SHA }}"
       -
         name: Build and push
         id: docker_build
