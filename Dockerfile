@@ -3,22 +3,23 @@ FROM jupyter/minimal-notebook
 USER root
 
 RUN apt-get -y update
-RUN apt-get -y install libgl1-mesa-glx
+#RUN apt-get -y install libgl1-mesa-glx
 
+ARG conda_env=datafest_2021
 COPY --chown=${NB_UID}:${NB_GID} datafest_env.txt /home/$NB_USER/tmp/
 RUN cd /home/$NB_USER/tmp/ && \
-     conda env create -p $CONDA_DIR/envs/datafest2021 -f datafest_env.txt && \
+     conda env create -p $CONDA_DIR/envs/${conda_env} -n ${conda_env} -f datafest_env.txt && \
      conda clean --all -f -y
 
 
-RUN $CONDA_DIR/envs/datafest2021/bin/python -m ipykernel install --user --name=datafest2021 && \
+RUN $CONDA_DIR/envs/${conda_env}/bin/python -m ipykernel install --user --name=${conda_env} && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
 # RUN $CONDA_DIR/envs/${conda_env}/bin/pip install 
 
 # prepend conda environment to path
-ENV PATH $CONDA_DIR/envs/datafest2021/bin:$PATH
+ENV PATH $CONDA_DIR/envs/${conda_env}/bin:$PATH
 
 # if you want this environment to be the default one, uncomment the following line:
 ENV CONDA_DEFAULT_ENV ${conda_env}
