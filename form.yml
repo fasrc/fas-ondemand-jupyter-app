@@ -1,5 +1,5 @@
 ---
-title: "Jupyter Notebook - General"
+title: "Jupyter Notebook - Datafest2021"
 cluster: "academic"
 attributes:
   modules: null
@@ -12,10 +12,10 @@ attributes:
   custom_email_address:
     label: email address for status notification
     widget: text_field
-  custom_memory_per_node: 2
-  custom_num_cores: 1
+  custom_memory_per_node: 8
+  custom_num_cores: 4
   custom_num_gpus: 0
-  jupyter_version: "harvardat_atg-jupyter-general_latest.sif"
+  jupyter_version: "datafest-jupyter_datafest_2021_9fcd09d0a494.sif"
   custom_reservation: null
   envscript: null
   bc_account:
