@@ -29,6 +29,5 @@ form:
   - custom_time
   - jupyter_version
   - envscript
-  - bc_email_on_started
   - custom_email_address
   - custom_reservation
