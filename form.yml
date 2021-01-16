@@ -1,26 +1,23 @@
 ---
-title: "Jupyter Notebook - Datafest2021"
+title: "Jupyter Notebook - Datafest 2021"
 cluster: "academic"
 attributes:
   modules: null
   extra_jupyter_args: ""
-  custom_time:
-    label: "Allocated Time (expressed in MM , or HH:MM:SS , or DD-HH:MM)."
-    value: "04:00:00"
-    widget: text_field
+  custom_time: "4-00:00"
   bc_queue: "academic"
-  custom_email_address:
-    label: email address for status notification
-    widget: text_field
-  custom_memory_per_node: 8
-  custom_num_cores: 4
+  custom_email_address: null
+  custom_memory_per_node: 16
+  custom_num_cores: 8
   custom_num_gpus: 0
-  jupyter_version: "datafest-jupyter_datafest_2021_9fcd09d0a494.sif"
+  jupyter_version:
+    widget: select
+    label: "jupyter version"
+    options:
+      - [ "Jupyter - Datafest 2021", "datafest-jupyter_datafest_2021_9fcd09d0a494.sif"]
   custom_reservation: null
   envscript: null
-  bc_account:
-    label: "Slurm Account"
-    help: "If you are not in multiple labs please leave this blank."
+  bc_account: null
 
 form:
   - modules
