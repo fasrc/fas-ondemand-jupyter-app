@@ -3,16 +3,14 @@ FROM jupyter/minimal-notebook
 USER root
 
 RUN apt-get -y update
-#RUN apt-get -y install libgl1-mesa-glx
 
 ARG conda_env=datafest_2021
-COPY --chown=${NB_UID}:${NB_GID} datafest_env.txt /home/$NB_USER/tmp/
-RUN cd /home/$NB_USER/tmp/ && \
-     conda env create -p $CONDA_DIR/envs/${conda_env} -n ${conda_env} -f datafest_env.txt && \
+COPY --chown=${NB_UID}:${NB_GID} ${conda_env}.yml /tmp/
+RUN cd /tmp/ && \
+     conda env create -p $CONDA_DIR/envs/${conda_env} -f ${conda_env}.yml && \
      conda clean --all -f -y
 
-
-RUN $CONDA_DIR/envs/${conda_env}/bin/python -m ipykernel install --user --name=${conda_env} && \
+RUN $CONDA_DIR/envs/${conda_env}/bin/python -m ipykernel install  --name=${conda_env} && \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
@@ -60,4 +58,3 @@ ENV NUMBA_CACHE_DIR="/home/${NB_USER}/.cache/"
 USER $NB_UID
 
 WORKDIR $HOME
- 
