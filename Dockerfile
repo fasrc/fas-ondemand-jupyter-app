@@ -22,7 +22,8 @@ ENV PATH $CONDA_DIR/envs/${conda_env}/bin:$PATH
 # if you want this environment to be the default one, uncomment the following line:
 ENV CONDA_DEFAULT_ENV ${conda_env}
 
-RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+RUN conda install --quiet --yes bokeh widgetsnbextension && conda clean --all -f -y && \
+    jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     # Also activate ipywidgets extension for JupyterLab
     # Check this URL for most recent compatibilities
     # https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
