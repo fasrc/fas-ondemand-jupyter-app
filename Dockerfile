@@ -1,5 +1,7 @@
 FROM harvardat/atg-jupyter-general:a6ce412
 
+USER root
+
 ARG conda_env=datafest_2021
 COPY --chown=${NB_UID}:${NB_GID} ${conda_env}.yml /tmp/
 RUN cd /tmp/ && \
