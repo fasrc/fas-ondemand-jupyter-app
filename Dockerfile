@@ -2,51 +2,9 @@ FROM jupyter/minimal-notebook
 
 USER root
 
-RUN apt-get -y update
-RUN apt-get -y install libgl1-mesa-glx
-
 RUN conda install --quiet --yes \
-    'altair' \
-    'arviz' \
-    'bokeh' \
-    'beautifulsoup4' \
-    'control' \
     'dash' \
-    'filterpy' \
-    'gensim' \
-    'holoviews' \
-    'ipytest' \
-    'IPython' \
-    'ipywidgets' \
-    'jupyterlab' \
-    'matplotlib' \
-    'mkl-service' \
-    'mesa' \
-    'mne' \
-    'mpmath' \
-    'networkx' \
-    'nltk' \
-    'numba' \
-    'numpy=1.18.5' \
-    'openpyxl' \
-    'opencv' \
-    'pandas' \
-    'peakutils' \
-    'pillow' \
-    'plotly' \
-    'powerlaw' \
-    'requests' \
-    'rpy2' \
-    'scikit-image' \
-    'scikit-learn' \
-    'scipy=1.4.1' \
-    'seaborn' \
-    'spacy' \
-    'statsmodels' \
-    'sympy' \
-    'thinkx' \
-    'xlrd' \
-    'xlsxwriter' \
+    'r-ncdf4' 'r-sp' 'r-raster' 'r-fields' \
     && \
     conda clean --al -f -y && \
     # Activate ipywidgets extension in the environment that runs the notebook server
@@ -65,9 +23,6 @@ RUN conda install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
     
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic tensorflow-gpu
-
 # Install facets which does not have a pip or conda package at the moment
 WORKDIR /tmp
 RUN git clone https://github.com/PAIR-code/facets.git && \
