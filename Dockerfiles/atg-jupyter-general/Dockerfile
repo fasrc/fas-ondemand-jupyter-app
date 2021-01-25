@@ -1,77 +1,52 @@
-FROM jupyter/minimal-notebook
+# Use base image with the requested Python version 3.7
+FROM jupyter/minimal-notebook:29a003bb3030
 
 USER root
 
 RUN apt-get -y update
 RUN apt-get -y install libgl1-mesa-glx
 
-RUN conda install --quiet --yes \
-    'altair' \
-    'arviz' \
-    'bokeh' \
-    'beautifulsoup4' \
-    'control' \
-    'dash' \
-    'filterpy' \
-    'gensim' \
-    'holoviews' \
-    'ipytest' \
-    'IPython' \
-    'ipywidgets' \
-    'jupyterlab' \
-    'matplotlib' \
-    'mkl-service' \
-    'mesa' \
-    'mne' \
-    'mpmath' \
-    'networkx' \
-    'nltk' \
-    'numba' \
-    'numpy=1.18.5' \
-    'openpyxl' \
-    'opencv' \
-    'pandas' \
-    'peakutils' \
-    'pillow' \
-    'plotly' \
-    'powerlaw' \
-    'requests' \
-    'rpy2' \
-    'scikit-image' \
-    'scikit-learn' \
-    'scipy=1.4.1' \
-    'seaborn' \
-    'spacy' \
-    'statsmodels' \
-    'sympy' \
-    'thinkx' \
-    'xlrd' \
-    'xlsxwriter' \
-    && \
-    conda clean --al -f -y && \
-    # Activate ipywidgets extension in the environment that runs the notebook server
-    jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-    # Also activate ipywidgets extension for JupyterLab
-    # Check this URL for most recent compatibilities
-    # https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager@^2.0.0 --no-build && \
-    jupyter labextension install @bokeh/jupyter_bokeh@^2.0.0 --no-build && \
-    jupyter labextension install jupyter-matplotlib@^0.7.2 --no-build && \
-    jupyter lab build -y && \
-    jupyter lab clean -y && \
-    npm cache clean --force && \
-    rm -rf "/home/${NB_USER}/.cache/yarn" && \
-    rm -rf "/home/${NB_USER}/.node-gyp" && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
-    
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic tensorflow-gpu keras
+# Install dependencies of the pyjags package
+RUN apt-get -y install pkg-config jags
+
+# Install python packages using pip
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir tensorflow-gpu==2.0.0
+RUN pip install --no-cache-dir altair arviz bokeh beautifulsoup4 control
+RUN pip install --no-cache-dir dash filterpy gensim holoviews ipytest
+RUN pip install --no-cache-dir IPython ipywidgets jupyterlab matplotlib
+RUN pip install --no-cache-dir mesa mne mpmath networkx nltk
+RUN pip install --no-cache-dir numba numpy openpyxl pandas peakutils
+RUN pip install --no-cache-dir pillow plotly powerlaw pymc3 requests
+RUN pip install --no-cache-dir scikit-image scikit-learn scipy seaborn
+RUN pip install --no-cache-dir spacy statsmodels sympy thinkx xlrd xlsxwriter
+RUN pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic keras opencv-python pyjags csaps
+
+# Update conda
+RUN conda update --quiet --yes conda
+
+# Install python packages using conda
+RUN conda install --quiet --yes -c conda-forge mkl-service rpy2
+
+# Install R packages
+RUN conda install --quiet --yes 'r-aplpack' 'r-cluster' 'r-codetools' 'r-dbscan' 'r-factoextra' \
+    'r-gam' 'r-ggplot2' 'r-splines2' 'r-teachingdemos'
+
+RUN conda clean --al -f -y
 
 # Add extra conda channels
 RUN conda config --append channels conda-forge
 RUN conda config --append channels anaconda-fusion
 RUN conda config --append channels jmcmurray
+
+# Activate ipywidgets extension in the environment that runs the notebook server
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix
+
+RUN npm cache clean --force && \
+    rm -rf "/home/${NB_USER}/.cache/yarn" && \
+    rm -rf "/home/${NB_USER}/.node-gyp" && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
 
 # Install facets which does not have a pip or conda package at the moment
 WORKDIR /tmp
@@ -93,4 +68,3 @@ ENV NUMBA_CACHE_DIR="/home/${NB_USER}/.cache/"
 USER $NB_UID
 
 WORKDIR $HOME
- 
