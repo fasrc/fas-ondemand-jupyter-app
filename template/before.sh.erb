@@ -66,3 +66,5 @@ export JOBROOT=$PWD
 
 export CONTAINER_REPO=/n/singularity_images/Academic-cluster/Spring_2021
 export COURSE=cs109b
+export LAST_DIGIT=$(id -n -u  | sed 's/\(.*\)\([0-9]\)\(_g_.*\)/\2/' )
+export COURSE_SCRATCH_FOLDER=/n/holyscratch01/Academic-cluster/Spring_2021/g_84598/SCRATCH
