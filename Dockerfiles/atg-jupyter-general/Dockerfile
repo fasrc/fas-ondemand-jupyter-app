@@ -5,6 +5,9 @@ USER root
 RUN apt-get -y update
 RUN apt-get -y install libgl1-mesa-glx
 
+# Update conda
+RUN conda update --quiet --yes conda
+
 RUN conda install --quiet --yes \
     'altair' \
     'arviz' \
@@ -15,6 +18,7 @@ RUN conda install --quiet --yes \
     'filterpy' \
     'gensim' \
     'holoviews' \
+    'ipympl' \
     'ipytest' \
     'IPython' \
     'ipywidgets' \
@@ -27,7 +31,7 @@ RUN conda install --quiet --yes \
     'networkx' \
     'nltk' \
     'numba' \
-    'numpy=1.18.5' \
+    'numpy' \
     'openpyxl' \
     'opencv' \
     'pandas' \
@@ -39,7 +43,7 @@ RUN conda install --quiet --yes \
     'rpy2' \
     'scikit-image' \
     'scikit-learn' \
-    'scipy=1.4.1' \
+    'scipy' \
     'seaborn' \
     'spacy' \
     'statsmodels' \
@@ -48,17 +52,9 @@ RUN conda install --quiet --yes \
     'xlrd' \
     'xlsxwriter' \
     && \
-    conda clean --al -f -y && \
-    # Activate ipywidgets extension in the environment that runs the notebook server
-    jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-    # Also activate ipywidgets extension for JupyterLab
-    # Check this URL for most recent compatibilities
-    # https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager@^2.0.0 --no-build && \
-    jupyter labextension install @bokeh/jupyter_bokeh@^2.0.0 --no-build && \
-    jupyter labextension install jupyter-matplotlib@^0.7.2 --no-build && \
-    jupyter lab build -y && \
-    jupyter lab clean -y && \
+    conda clean --al -f -y
+# Activate ipywidgets extension in the environment that runs the notebook server, and do some clean-up
+RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     npm cache clean --force && \
     rm -rf "/home/${NB_USER}/.cache/yarn" && \
     rm -rf "/home/${NB_USER}/.node-gyp" && \
@@ -66,7 +62,7 @@ RUN conda install --quiet --yes \
     fix-permissions "/home/${NB_USER}"
     
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic tensorflow-gpu keras
+    pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic tensorflow-gpu keras mpl-interactions
 
 # Add extra conda channels
 RUN conda config --append channels conda-forge
