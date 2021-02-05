@@ -15,7 +15,7 @@ attributes:
   custom_memory_per_node: 4
   custom_num_cores: 2
   custom_num_gpus: 0
-  jupyter_version: "harvardat_cs109_1e263a8.sif"
+  jupyter_version: "harvardat_cs109_730ddcc.sif"
   custom_reservation: null
   envscript: null
   bc_account:
