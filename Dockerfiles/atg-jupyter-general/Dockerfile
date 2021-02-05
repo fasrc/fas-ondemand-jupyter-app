@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir dash filterpy gensim holoviews ipytest
 RUN pip install --no-cache-dir IPython ipywidgets jupyterlab matplotlib
 RUN pip install --no-cache-dir mesa mne mpmath networkx nltk
 RUN pip install --no-cache-dir numba numpy openpyxl pandas peakutils
-RUN pip install --no-cache-dir pillow plotly powerlaw pymc3 requests
+RUN pip install --no-cache-dir pillow plotly powerlaw requests
 RUN pip install --no-cache-dir scikit-image scikit-learn scipy seaborn
 RUN pip install --no-cache-dir spacy statsmodels sympy thinkx xlrd xlsxwriter
 RUN pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic keras opencv-python pyjags csaps
@@ -26,7 +26,7 @@ RUN pip install --no-cache-dir certifi depfinder gdown imageio mamba theano urll
 RUN conda update --quiet --yes conda
 
 # Install python packages using conda
-RUN conda install --quiet --yes -c conda-forge mkl-service rpy2
+RUN conda install --quiet --yes -c conda-forge mkl-service rpy2 pymc3
 
 # Install R packages
 RUN conda install --quiet --yes 'r-aplpack' 'r-cluster' 'r-codetools' 'r-dbscan' 'r-factoextra' \
