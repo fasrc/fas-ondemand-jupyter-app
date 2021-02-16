@@ -10,7 +10,7 @@ RUN apt-get -y install pkg-config jags
 
 # Install python packages using pip
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir tensorflow-gpu
+RUN pip install --no-cache-dir tensorflow-gpu tensorflow-addons tensorflow-datasets tf-keras-vis
 RUN pip install --no-cache-dir altair arviz bokeh beautifulsoup4 control
 RUN pip install --no-cache-dir dash filterpy gensim holoviews ipytest
 RUN pip install --no-cache-dir IPython ipywidgets jupyterlab matplotlib
@@ -21,6 +21,7 @@ RUN pip install --no-cache-dir scikit-image scikit-learn scipy seaborn
 RUN pip install --no-cache-dir spacy statsmodels sympy thinkx xlrd xlsxwriter
 RUN pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic keras opencv-python pyjags csaps
 RUN pip install --no-cache-dir certifi depfinder gdown imageio mamba theano urllib3
+RUN pip install --no-cache-dir gridworld helpers iacs-cli
 
 # Update conda
 RUN conda update --quiet --yes conda
