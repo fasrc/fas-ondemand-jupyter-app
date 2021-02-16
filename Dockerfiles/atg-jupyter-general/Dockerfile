@@ -11,23 +11,27 @@ RUN apt-get -y install pkg-config jags
 # Install python packages using pip
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir tensorflow-gpu tensorflow-addons tensorflow-datasets tf-keras-vis
-RUN pip install --no-cache-dir altair arviz bokeh beautifulsoup4 control
-RUN pip install --no-cache-dir dash filterpy gensim holoviews ipytest
-RUN pip install --no-cache-dir IPython ipywidgets jupyterlab matplotlib
-RUN pip install --no-cache-dir mesa mne mpmath networkx nltk
-RUN pip install --no-cache-dir numba numpy openpyxl pandas peakutils
-RUN pip install --no-cache-dir pillow plotly powerlaw requests
-RUN pip install --no-cache-dir scikit-image scikit-learn scipy seaborn
-RUN pip install --no-cache-dir spacy statsmodels sympy thinkx xlrd xlsxwriter
-RUN pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic keras opencv-python pyjags csaps
-RUN pip install --no-cache-dir certifi depfinder gdown imageio mamba theano urllib3
-RUN pip install --no-cache-dir gridworld helpers iacs-cli
+RUN pip install --no-cache-dir pyjags csaps gridworld helpers iacs-cli gap-stat
 
 # Update conda
 RUN conda update --quiet --yes conda
 
+# Add the conda-forge conda channel
+RUN conda config --append channels conda-forge
+
 # Install python packages using conda
-RUN conda install --quiet --yes -c conda-forge mkl-service rpy2 pymc3
+RUN conda install --quiet --yes mkl-service rpy2 pymc3
+RUN conda install --quiet --yes gym progressbar2 pygam
+RUN conda install --quiet --yes altair arviz bokeh beautifulsoup4 control
+RUN conda install --quiet --yes dash filterpy gensim holoviews ipytest
+RUN conda install --quiet --yes IPython ipywidgets jupyterlab matplotlib
+RUN conda install --quiet --yes mesa mne mpmath networkx nltk
+RUN conda install --quiet --yes numba numpy openpyxl pandas peakutils
+RUN conda install --quiet --yes pillow plotly powerlaw requests
+RUN conda install --quiet --yes scikit-image scikit-learn scipy seaborn
+RUN conda install --quiet --yes spacy statsmodels sympy thinkx xlrd xlsxwriter
+RUN conda install --quiet --yes stochastic keras opencv
+RUN conda install --quiet --yes certifi depfinder gdown imageio mamba theano urllib3
 
 # Install R packages
 RUN conda install --quiet --yes 'r-aplpack' 'r-cluster' 'r-codetools' 'r-dbscan' 'r-factoextra' \
@@ -36,7 +40,6 @@ RUN conda install --quiet --yes 'r-aplpack' 'r-cluster' 'r-codetools' 'r-dbscan'
 RUN conda clean --al -f -y
 
 # Add extra conda channels
-RUN conda config --append channels conda-forge
 RUN conda config --append channels anaconda-fusion
 RUN conda config --append channels jmcmurray
 
