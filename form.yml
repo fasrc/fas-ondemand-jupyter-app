@@ -12,10 +12,10 @@ attributes:
   custom_email_address:
     label: email address for status notification
     widget: text_field
-  custom_memory_per_node: 4
-  custom_num_cores: 2
+  custom_memory_per_node: 32
+  custom_num_cores: 8
   custom_num_gpus: 0
-  jupyter_version: "harvardat_cs109_730ddcc.sif"
+  jupyter_version: "harvardat_cs109_a52c960.sif"
   custom_reservation: null
   envscript: null
   bc_account:

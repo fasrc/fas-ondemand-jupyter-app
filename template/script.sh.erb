@@ -84,4 +84,5 @@ jupyter notebook \
 
 EOF3
 
+export SINGULARITYENV_OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 singularity exec $SING_GPU $SING_BINDS $container_image $JOBROOT/jupyter.script.sh
