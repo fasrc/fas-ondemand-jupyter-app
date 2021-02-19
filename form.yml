@@ -1,5 +1,5 @@
 ---
-title: "Jupyter Notebook - CS109b"
+title: "Jupyter Notebook - Astron100"
 cluster: "academic"
 attributes:
   modules: null
@@ -12,10 +12,10 @@ attributes:
   custom_email_address:
     label: email address for status notification
     widget: text_field
-  custom_memory_per_node: 32
+  custom_memory_per_node: 16
   custom_num_cores: 8
   custom_num_gpus: 0
-  jupyter_version: "harvardat_cs109_a52c960.sif"
+  jupyter_version: "harvardat_atg_nbconda_latest-2021-02-17-9bee8baf332c.sif"
   custom_reservation: null
   envscript: null
   bc_account:
@@ -32,6 +32,4 @@ form:
   - custom_time
   - jupyter_version
   - envscript
-  - bc_email_on_started
-  - custom_email_address
   - custom_reservation

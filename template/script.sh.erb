@@ -23,7 +23,8 @@ module list
 
 # Benchmark info
 echo "TIMING - Starting jupyter at: $(date)"
-export container_folder=${CONTAINER_REPO}/${COURSE}/${LAST_DIGIT}
+##export container_folder=${CONTAINER_REPO}/${COURSE}/${LAST_DIGIT}
+export container_folder=${CONTAINER_REPO}/${COURSE}
 export container_image=$container_folder/<%= context.jupyter_version %>
 
 # Launch the Jupyter Notebook Server
