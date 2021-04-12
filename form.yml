@@ -8,13 +8,31 @@ attributes:
     label: "Allocated Time (expressed in MM , or HH:MM:SS , or DD-HH:MM)."
     value: "04:00:00"
     widget: text_field
-  bc_queue: "academic"
+  bc_queue:
+    value: "academic"
   custom_email_address:
     label: email address for status notification
     widget: text_field
-  custom_memory_per_node: 32
-  custom_num_cores: 8
-  custom_num_gpus: 0
+  custom_memory_per_node:
+    label: Memory Allocation in GB
+    value: 8
+    widget: text_field
+  custom_num_cores:
+    label: Number of cores
+    value: 1
+    min:   1
+    step:  1
+    max:   64
+    widget: number_field
+    help: "Number of Cpus to allocate"
+  custom_num_gpus:
+    label: Number of GPUs
+    value: 0
+    min:   0
+    step:  1
+    max:   4
+    widget: number_field
+    help: "Number of GPUs to allocate. Available only on the **gpu** partition"
   jupyter_version: "harvardat_cs109_a52c960.sif"
   custom_reservation: null
   envscript: null
