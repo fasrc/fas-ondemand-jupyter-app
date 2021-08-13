@@ -15,13 +15,13 @@ attributes:
   <% if defined?(@custom_memory_per_node_select) && @custom_memory_per_node_select %>
   custom_memory_per_node:
     label: Memory Allocation in GB
-    value: <%= defined?(@custom_memory_per_node) ? @custom_memory_per_node : 4 %>
+    value: <%= defined?(@custom_memory_per_node) ? @custom_memory_per_node : 2 %>
     min: <%= defined?(@custom_memory_per_node_min) ? @custom_memory_per_node_min : 1 %>
     step: 1
     max: <%= defined?(@custom_memory_per_node_max) ? @custom_memory_per_node_max : 32 %>
     widget: number_field
   <% else %>
-  custom_memory_per_node: <%= defined?(@custom_memory_per_node) ? @custom_memory_per_node : 8 %>
+  custom_memory_per_node: <%= defined?(@custom_memory_per_node) ? @custom_memory_per_node : 2 %>
   <% end %>
   <% if defined?(@custom_num_cores_select) && @custom_num_cores_select %>
   custom_num_cores:
@@ -33,7 +33,7 @@ attributes:
     widget: number_field
     help: "Number of Cpus to allocate"
   <% else %>
-  custom_num_cores: <%= defined?(@custom_num_cores) ? @custom_num_cores : 2 %>
+  custom_num_cores: <%= defined?(@custom_num_cores) ? @custom_num_cores : 1 %>
   <% end %>
   custom_num_gpus: <%= defined?(@custom_num_gpus) ? @custom_num_gpus : 0 %> 
   jupyter_version: <%= defined?(@jupyter_version) ? @jupyter_version : '' %>
