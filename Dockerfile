@@ -22,6 +22,8 @@ RUN conda install --quiet --yes \
 COPY requirements.txt . 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
+    
+RUN rm requirements.txt
 
 # Activate ipywidgets extension in the environment that runs the notebook server, and do some clean-up
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
