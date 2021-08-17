@@ -8,51 +8,21 @@ RUN apt-get -y install libgl1-mesa-glx
 # Update conda
 RUN conda update --quiet --yes conda
 
+# Add extra conda channels
+RUN conda config --append channels conda-forge \
+    --append channels anaconda-fusion \
+    --append channels jmcmurray
+
 RUN conda install --quiet --yes \
-    'altair' \
-    'arviz' \
-    'bokeh' \
-    'beautifulsoup4' \
-    'control' \
-    'dash' \
-    'filterpy' \
-    'gensim' \
-    'holoviews' \
-    'ipympl' \
-    'ipytest' \
-    'IPython' \
-    'ipywidgets' \
-    'jupyterlab' \
-    'matplotlib' \
     'mkl-service' \
-    'mesa' \
-    'mne' \
-    'mpmath' \
-    'networkx' \
-    'nltk' \
-    'numba' \
-    'numpy' \
-    'openpyxl' \
-    'opencv' \
-    'pandas' \
-    'peakutils' \
-    'pillow' \
-    'plotly' \
-    'powerlaw' \
-    'requests' \
     'rpy2' \
-    'scikit-image' \
-    'scikit-learn' \
-    'scipy' \
-    'seaborn' \
-    'spacy' \
-    'statsmodels' \
-    'sympy' \
-    'thinkx' \
-    'xlrd' \
-    'xlsxwriter' \
     && \
     conda clean --al -f -y
+
+COPY requirements.txt . 
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
 # Activate ipywidgets extension in the environment that runs the notebook server, and do some clean-up
 RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     npm cache clean --force && \
@@ -60,14 +30,6 @@ RUN jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     rm -rf "/home/${NB_USER}/.node-gyp" && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-    
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir gap-stat gym progressbar2 pygam stochastic tensorflow-gpu keras mpl-interactions
-
-# Add extra conda channels
-RUN conda config --append channels conda-forge
-RUN conda config --append channels anaconda-fusion
-RUN conda config --append channels jmcmurray
 
 # Install facets which does not have a pip or conda package at the moment
 WORKDIR /tmp
