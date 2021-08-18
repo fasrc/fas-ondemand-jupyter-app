@@ -1,0 +1,56 @@
+---
+name: <%= defined?(@title) ? @title : "Jupyter Notebook" %>
+cluster: "academic"
+attributes:
+  modules: null
+  extra_jupyter_args: ""
+  custom_time:
+    label: "Allocated Time (expressed in MM , or HH:MM:SS , or DD-HH:MM)."
+    value: "<%= defined?(@custom_time) ? @custom_time : '04:00:00' %>"
+    widget: text_field
+  bc_queue: "academic"
+  custom_email_address:
+    label: email address for status notification
+    widget: text_field
+  <% if defined?(@custom_memory_per_node_select) && @custom_memory_per_node_select %>
+  custom_memory_per_node:
+    label: Memory Allocation in GB
+    value: <%= defined?(@custom_memory_per_node) ? @custom_memory_per_node : 2 %>
+    min: <%= defined?(@custom_memory_per_node_min) ? @custom_memory_per_node_min : 1 %>
+    step: 1
+    max: <%= defined?(@custom_memory_per_node_max) ? @custom_memory_per_node_max : 32 %>
+    widget: number_field
+  <% else %>
+  custom_memory_per_node: <%= defined?(@custom_memory_per_node) ? @custom_memory_per_node : 2 %>
+  <% end %>
+  <% if defined?(@custom_num_cores_select) && @custom_num_cores_select %>
+  custom_num_cores:
+    label: Number of cores
+    value: <%= defined?(@custom_num_cores) ? @custom_num_cores : 1 %>
+    min: <%= defined?(@custom_num_cores_min) ? @custom_num_cores_min : 1 %>
+    step: 1
+    max: <%= defined?(@custom_num_cores_max) ? @custom_num_cores_max : 16 %>
+    widget: number_field
+    help: "Number of Cpus to allocate"
+  <% else %>
+  custom_num_cores: <%= defined?(@custom_num_cores) ? @custom_num_cores : 1 %>
+  <% end %>
+  custom_num_gpus: <%= defined?(@custom_num_gpus) ? @custom_num_gpus : 0 %> 
+  jupyter_version: <%= defined?(@jupyter_version) ? @jupyter_version : '' %>
+  custom_reservation: null
+  envscript: null
+  bc_account:
+    label: "Slurm Account"
+    help: "If you are not in multiple labs please leave this blank."
+
+form:
+  - modules
+  - extra_jupyter_args
+  - bc_queue
+  - custom_memory_per_node
+  - custom_num_cores
+  - custom_num_gpus
+  - custom_time
+  - jupyter_version
+  - envscript
+  - custom_reservation

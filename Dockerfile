@@ -53,4 +53,3 @@ ENV NUMBA_CACHE_DIR="/home/${NB_USER}/.cache/"
 USER $NB_UID
 
 WORKDIR $HOME
- 
