@@ -15,6 +15,7 @@ RUN conda config --append channels conda-forge \
 
 RUN conda install --quiet --yes \
     'mkl-service' \
+    'gensim' \
     && \
     conda clean --al -f -y
 

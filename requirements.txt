@@ -87,8 +87,6 @@ future==0.18.2
     # via dash
 gap-stat==2.0.1
     # via -r requirements.in
-gensim==4.0.1
-    # via -r requirements.in
 holoviews==1.14.5
     # via -r requirements.in
 idna==3.2
@@ -201,7 +199,6 @@ numpy==1.21.2
     #   bokeh
     #   cftime
     #   gap-stat
-    #   gensim
     #   holoviews
     #   imageio
     #   matplotlib
@@ -346,7 +343,6 @@ scipy==1.7.1
     #   -r requirements.in
     #   arviz
     #   gap-stat
-    #   gensim
     #   scikit-image
     #   scikit-learn
     #   seaborn
@@ -367,9 +363,7 @@ six==1.16.0
     #   python-dateutil
     #   python-utils
 smart-open==5.2.0
-    # via
-    #   gensim
-    #   pathy
+    # via pathy
 soupsieve==2.2.1
     # via beautifulsoup4
 spacy==3.1.2
