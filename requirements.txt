@@ -127,8 +127,6 @@ matplotlib-inline==0.1.2
     #   ipython
 mistune==0.8.4
     # via nbconvert
-mne==0.23.0
-    # via -r requirements.in
 mpl-interactions==0.18.0
     # via -r requirements.in
 mpmath==1.2.1
@@ -162,7 +160,6 @@ numpy==1.19.5
     #   bokeh
     #   imageio
     #   matplotlib
-    #   mne
     #   opencv-python
     #   pandas
     #   patsy
@@ -269,7 +266,6 @@ scikit-learn==0.24.2
 scipy==1.7.1
     # via
     #   -r requirements.in
-    #   mne
     #   peakutils
     #   scikit-image
     #   scikit-learn
