@@ -8,6 +8,7 @@ RUN apt-get -y install libgl1-mesa-glx
 # Update conda
 RUN conda update --quiet --yes conda
 
+
 # Add extra conda channels
 RUN conda config --append channels conda-forge \
     --append channels anaconda-fusion \
