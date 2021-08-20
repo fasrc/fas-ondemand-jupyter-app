@@ -16,6 +16,7 @@ RUN conda config --append channels conda-forge \
 RUN conda install --quiet --yes \
     'mkl-service' \
     'rpy2' \
+    'r-irkernel' \
     && \
     conda clean --al -f -y
 
