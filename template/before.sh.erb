@@ -63,7 +63,3 @@ export MY_JUP_PORT=${port}
 export MY_JUP_PASSWD=sha1:${SALT}:${PASSWORD_SHA1}
 export MY_JUP_BASEURL=/node/${host}/${port}/
 export JOBROOT=$PWD
-
-export CONTAINER_REPO=/n/singularity_images/Academic-cluster/Tools
-export COURSE=jupyter-atg-general
-export LAST_DIGIT=$(id -n -u  | sed 's/\(.*\)\([0-9]\)\(_g_.*\)/\2/' )
