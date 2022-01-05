@@ -23,7 +23,7 @@ module list
 
 # Benchmark info
 echo "TIMING - Starting jupyter at: $(date)"
-export container_folder=/n/singularity_images/Academic-cluster/<%= context.semester %>/<%= context.course %>
+export container_folder=/n/singularity_images/Academic-cluster/images/<%= context.course %>
 ## when you test new installs you probaby want to drop the images locally in your home folder
 #export container_folder=$HOME/Programs/containers
 export container_image=$container_folder/<%= context.jupyter_version %>
