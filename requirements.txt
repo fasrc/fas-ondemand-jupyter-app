@@ -4,8 +4,6 @@
 #
 #    pip-compile requirements.in
 #
-alembic==1.6.5
-    # via nbgrader
 appnope==0.1.2
     # via
     #   ipykernel
@@ -22,11 +20,11 @@ bleach==4.0.0
     # via nbconvert
 bokeh==2.3.3
     # via -r requirements.in
-certifi==2021.5.30
+certifi==2021.10.8
     # via requests
 cffi==1.14.6
     # via argon2-cffi
-charset-normalizer==2.0.4
+charset-normalizer==2.0.10
     # via requests
 cycler==0.10.0
     # via matplotlib
@@ -42,18 +40,16 @@ entrypoints==0.3
     # via nbconvert
 et-xmlfile==1.1.0
     # via openpyxl
-idna==3.2
+idna==3.3
     # via requests
 imageio==2.9.0
     # via scikit-image
-ipykernel==6.2.0
+ipykernel==6.4.2
     # via
+    #   -r requirements.in
     #   ipympl
     #   ipywidgets
-    #   jupyter
-    #   jupyter-console
     #   notebook
-    #   qtconsole
 ipympl==0.7.0
     # via -r requirements.in
 ipython==7.26.0
@@ -61,17 +57,14 @@ ipython==7.26.0
     #   -r requirements.in
     #   ipykernel
     #   ipywidgets
-    #   jupyter-console
 ipython-genutils==0.2.0
     # via
+    #   ipykernel
     #   nbformat
     #   notebook
-    #   qtconsole
     #   traitlets
 ipywidgets==7.6.3
-    # via
-    #   ipympl
-    #   jupyter
+    # via ipympl
 jedi==0.18.0
     # via ipython
 jinja2==3.0.1
@@ -82,38 +75,23 @@ jinja2==3.0.1
 joblib==1.0.1
     # via scikit-learn
 jsonschema==3.2.0
-    # via
-    #   nbformat
-    #   nbgrader
-jupyter==1.0.0
-    # via nbgrader
+    # via nbformat
 jupyter-client==6.1.12
     # via
     #   ipykernel
-    #   jupyter-console
-    #   nbgrader
     #   notebook
-    #   qtconsole
-jupyter-console==6.4.0
-    # via jupyter
 jupyter-core==4.7.1
     # via
     #   jupyter-client
     #   nbconvert
     #   nbformat
-    #   nbgrader
     #   notebook
-    #   qtconsole
 jupyterlab-widgets==1.0.0
     # via ipywidgets
 kiwisolver==1.3.1
     # via matplotlib
-mako==1.1.4
-    # via alembic
 markupsafe==2.0.1
-    # via
-    #   jinja2
-    #   mako
+    # via jinja2
 matplotlib==3.4.3
     # via
     #   -r requirements.in
@@ -134,27 +112,18 @@ mpl-interactions==0.18.0
 mpmath==1.2.1
     # via sympy
 nbconvert==5.6.1
-    # via
-    #   jupyter
-    #   nbgrader
-    #   notebook
+    # via notebook
 nbformat==5.1.3
     # via
     #   ipywidgets
     #   nbconvert
-    #   nbgrader
     #   notebook
-nbgrader==0.6.2
-    # via -r requirements.in
 networkx==2.6.2
     # via
     #   -r requirements.in
     #   scikit-image
 notebook==6.4.3
-    # via
-    #   jupyter
-    #   nbgrader
-    #   widgetsnbextension
+    # via widgetsnbextension
 numpy==1.19.5
     # via
     #   -r requirements.in
@@ -210,9 +179,7 @@ pillow==8.3.1
 prometheus-client==0.11.0
     # via notebook
 prompt-toolkit==3.0.19
-    # via
-    #   ipython
-    #   jupyter-console
+    # via ipython
 ptyprocess==0.7.0
     # via
     #   pexpect
@@ -224,9 +191,7 @@ pyerfa==2.0.0
 pygments==2.10.0
     # via
     #   ipython
-    #   jupyter-console
     #   nbconvert
-    #   qtconsole
 pyparsing==2.4.7
     # via
     #   matplotlib
@@ -235,14 +200,10 @@ pyrsistent==0.18.0
     # via jsonschema
 python-dateutil==2.8.2
     # via
-    #   alembic
     #   bokeh
     #   jupyter-client
     #   matplotlib
-    #   nbgrader
     #   pandas
-python-editor==1.0.4
-    # via alembic
 pytz==2021.1
     # via pandas
 pywavelets==1.1.1
@@ -253,15 +214,8 @@ pyzmq==22.2.1
     # via
     #   jupyter-client
     #   notebook
-    #   qtconsole
-qtconsole==5.1.1
-    # via jupyter
-qtpy==1.10.0
-    # via qtconsole
-rapidfuzz==1.4.1
-    # via nbgrader
-requests==2.26.0
-    # via nbgrader
+requests==2.27.1
+    # via -r requirements.in
 scikit-image==0.18.2
     # via -r requirements.in
 scikit-learn==0.24.2
@@ -285,14 +239,9 @@ six==1.15.0
     #   bleach
     #   cycler
     #   jsonschema
-    #   nbgrader
     #   patsy
     #   python-dateutil
     #   traitlets
-sqlalchemy==1.3.24
-    # via
-    #   alembic
-    #   nbgrader
 statsmodels==0.12.2
     # via -r requirements.in
 sympy==1.8
@@ -310,7 +259,6 @@ tornado==6.1
     #   bokeh
     #   ipykernel
     #   jupyter-client
-    #   nbgrader
     #   notebook
     #   terminado
 traitlets==4.3.3
@@ -323,12 +271,10 @@ traitlets==4.3.3
     #   matplotlib-inline
     #   nbconvert
     #   nbformat
-    #   nbgrader
     #   notebook
-    #   qtconsole
 typing-extensions==3.7.4.3
     # via bokeh
-urllib3==1.26.6
+urllib3==1.26.7
     # via requests
 wcwidth==0.2.5
     # via prompt-toolkit
