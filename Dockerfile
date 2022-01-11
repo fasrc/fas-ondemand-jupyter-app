@@ -17,6 +17,7 @@ RUN conda install --quiet --yes \
     'mkl-service' \
     'cartopy' \
     'gsw' \
+    'astropy' \
     && \
     conda clean --al -f -y
 
