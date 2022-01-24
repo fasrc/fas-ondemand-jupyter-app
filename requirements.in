@@ -21,3 +21,6 @@ statsmodels
 pillow
 peakutils
 mne
+ecomplexity
+geopandas
+igraph
