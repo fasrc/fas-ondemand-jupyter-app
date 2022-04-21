@@ -1,3 +1,10 @@
+# Get the list of requirements from the base image
+# so that pip-compile knows about them.
+# 
+# 	docker run --rm -it jupyter/minimal-notebook:notebook-6.4.7 pip list --format=freeze > base_requirements.txt
+#
+-c base_requirements.txt
+
 numpy
 pandas
 scikit-learn

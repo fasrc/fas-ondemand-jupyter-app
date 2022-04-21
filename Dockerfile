@@ -1,4 +1,4 @@
-FROM jupyter/minimal-notebook
+FROM jupyter/minimal-notebook:notebook-6.4.7
 
 USER root
 
@@ -21,7 +21,7 @@ RUN conda install --quiet --yes \
     && \
     conda clean --al -f -y
 
-COPY requirements.txt . 
+COPY requirements.txt .
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
@@ -53,5 +53,5 @@ USER $NB_UID
 
 WORKDIR $HOME
 
-# trigger workflow 
+# trigger workflow
 
