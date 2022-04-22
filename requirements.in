@@ -31,4 +31,4 @@ mne
 ecomplexity
 geopandas
 igraph
-dask
+dask[complete]

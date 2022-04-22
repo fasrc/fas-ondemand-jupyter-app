@@ -39,8 +39,10 @@ bleach==4.1.0
     # via
     #   -c base_requirements.txt
     #   nbconvert
-bokeh==2.3.3
-    # via -r requirements.in
+bokeh==2.4.2
+    # via
+    #   -r requirements.in
+    #   dask
 certifi==2021.10.8
     # via
     #   -c base_requirements.txt
@@ -61,17 +63,22 @@ click==8.0.3
     #   black
     #   click-plugins
     #   cligj
+    #   distributed
     #   fiona
 click-plugins==1.1.1
     # via fiona
 cligj==0.7.2
     # via fiona
 cloudpickle==2.0.0
-    # via dask
+    # via
+    #   dask
+    #   distributed
 cycler==0.10.0
     # via matplotlib
-dask==2022.4.1
-    # via -r requirements.in
+dask[complete]==2022.04.1
+    # via
+    #   -r requirements.in
+    #   distributed
 debugpy==1.5.1
     # via
     #   -c base_requirements.txt
@@ -84,6 +91,8 @@ defusedxml==0.7.1
     # via
     #   -c base_requirements.txt
     #   nbconvert
+distributed==2022.04.1
+    # via dask
 ecomplexity==0.5.2
     # via -r requirements.in
 entrypoints==0.3
@@ -103,6 +112,8 @@ fsspec==2022.3.0
     # via dask
 geopandas==0.10.2
     # via -r requirements.in
+heapdict==1.0.1
+    # via zict
 idna==3.3
     # via
     #   -c base_requirements.txt
@@ -141,6 +152,8 @@ jinja2==3.0.3
     # via
     #   -c base_requirements.txt
     #   bokeh
+    #   dask
+    #   distributed
     #   nbconvert
     #   notebook
 joblib==1.0.1
@@ -198,6 +211,8 @@ mpl-interactions==0.18.0
     # via -r requirements.in
 mpmath==1.2.1
     # via sympy
+msgpack==1.0.3
+    # via distributed
 munch==2.5.0
     # via fiona
 mypy-extensions==0.4.3
@@ -239,6 +254,7 @@ numpy==1.19.5
     #   -r requirements.in
     #   astropy
     #   bokeh
+    #   dask
     #   ecomplexity
     #   imageio
     #   matplotlib
@@ -265,9 +281,11 @@ packaging==21.3
     #   bleach
     #   bokeh
     #   dask
+    #   distributed
 pandas==1.3.2
     # via
     #   -r requirements.in
+    #   dask
     #   ecomplexity
     #   geopandas
     #   seaborn
@@ -317,6 +335,10 @@ prompt-toolkit==3.0.26
     # via
     #   -c base_requirements.txt
     #   ipython
+psutil==5.9.0
+    # via
+    #   -c base_requirements.txt
+    #   distributed
 ptyprocess==0.7.0
     # via
     #   -c base_requirements.txt
@@ -352,7 +374,6 @@ pyrsistent==0.18.1
 python-dateutil==2.8.2
     # via
     #   -c base_requirements.txt
-    #   bokeh
     #   jupyter-client
     #   matplotlib
     #   pandas
@@ -366,6 +387,7 @@ pyyaml==5.4.1
     # via
     #   bokeh
     #   dask
+    #   distributed
 pyzmq==22.3.0
     # via
     #   -c base_requirements.txt
@@ -406,6 +428,8 @@ six==1.16.0
     #   munch
     #   patsy
     #   python-dateutil
+sortedcontainers==2.4.0
+    # via distributed
 stack-data==0.1.4
     # via
     #   -c base_requirements.txt
@@ -414,6 +438,8 @@ statsmodels==0.12.2
     # via -r requirements.in
 sympy==1.8
     # via -r requirements.in
+tblib==1.7.0
+    # via distributed
 terminado==0.13.1
     # via
     #   -c base_requirements.txt
@@ -435,11 +461,13 @@ tomli==1.2.2
 toolz==0.11.2
     # via
     #   dask
+    #   distributed
     #   partd
 tornado==6.1
     # via
     #   -c base_requirements.txt
     #   bokeh
+    #   distributed
     #   ipykernel
     #   jupyter-client
     #   notebook
@@ -465,6 +493,7 @@ typing-extensions==4.0.1
 urllib3==1.26.8
     # via
     #   -c base_requirements.txt
+    #   distributed
     #   requests
 wcwidth==0.2.5
     # via
@@ -478,6 +507,8 @@ widgetsnbextension==3.5.1
     # via ipywidgets
 xlsxwriter==3.0.1
     # via -r requirements.in
+zict==2.1.0
+    # via distributed
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
